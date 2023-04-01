@@ -4,8 +4,8 @@
 #include <string.h>
 
 // Trabajo Obligatorio 1
-// Fecha.h
-// Modulo de la clase Fecha.
+// DTFecha.h
+// Modulo del DataType Fecha.
 
 using namespace std;
 
@@ -15,10 +15,10 @@ private:
     int mes;
     int anio;
 public:
-    DtFecha(); //Constructor por defecto 
-    DtFecha(int d, int m, int a); //Constructor por parametros
-    DtFecha(Fecha &fec); //Constructor por copia
-    void setFecha(int d, int m, int a); //Constructor por fecha
+    DtFecha(); 
+    DtFecha(int d, int m, int a); 
+    DtFecha(Fecha &fec); 
+    void setFecha(int d, int m, int a); 
     Fecha *getFecha();
     ~DtFecha();
 };

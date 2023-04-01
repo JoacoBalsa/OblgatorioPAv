@@ -13,12 +13,12 @@ class Spinning: public Clase{
 private:
     int cantBicicletas;
 public:
-    Spinning(); //Constructor default
-    Spinning(int id, string nombre, turno turno, Inscripcion *insc[MAX_INSCRIPCIONES], int cantBicicletas); //Constructor por parametros
-    int getCantBicicletas(); //Getter
-    void setCantBicicletas(int cantBicicletas); //Setter
-    int cupo(); //Operacion
-    ~Spinning(); //Destructor
+    Spinning(); 
+    Spinning(int id, string nombre, turno turno, Inscripcion *insc[MAX_INSCRIPCIONES], int cantBicicletas); 
+    int getCantBicicletas(); 
+    void setCantBicicletas(int cantBicicletas); 
+    int cupo(); 
+    ~Spinning();
 };
 
 #endif

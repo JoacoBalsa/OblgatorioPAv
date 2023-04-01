@@ -1,12 +1,13 @@
-// Trabajo Obligatorio 1
-// Clase.h
-// Modulo de la clase Clase.
 #ifndef CLASE
 #define CLASE
 #include <iostream>
 #include <string.h>
 #include "DtClase.h"
 #include "Inscripcion.h"
+
+// Trabajo Obligatorio 1
+// Clase.h
+// Modulo de la clase Clase.
 
 class Clase{
 private:

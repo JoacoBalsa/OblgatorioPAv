@@ -3,6 +3,10 @@
 #include <iostream>
 #include <string.h>
 
+// Trabajo Obligatorio 1
+// DtEntrenamiento.h
+// Modulo del DataType Entrenamiento.
+
 class DtEntrenamiento : public DtClase{
 private:
     bool enRambla;

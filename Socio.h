@@ -8,7 +8,6 @@
 
 class Socio{
     private:
-    // ATRIBUTOS
         int CI;
         string nombre;
     public:

@@ -5,6 +5,10 @@
 #include "DtClase.h"
 #include "Clase.h"
 
+// Trabajo Obligatorio 1
+// DtSpinning.h
+// Modulo del DataType Spinning.
+
 class DtSpinning: public DtClase{
 private:
     int cantBicicletas;

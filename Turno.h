@@ -3,7 +3,7 @@
 
 // Trabajo Obligatorio 1
 // Turno.h
-// Modulo de la clase Turno.
+// Modulo de la enumerado Turno.
 
 enum turno{
     Manana,
