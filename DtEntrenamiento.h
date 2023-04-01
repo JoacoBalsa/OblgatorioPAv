@@ -1,7 +1,9 @@
 #ifndef DTENTRENAMIENTO
 #define DTENTRENAMIENTO
+#include <iostream>
+#include <string.h>
 
-class DtEntrenamiento : public Clase{
+class DtEntrenamiento : public DtClase{
 private:
     bool enRambla;
 public:
@@ -11,6 +13,5 @@ public:
     void setRambla(bool r);
     ~DtEntrenamiento();
 };
-
 
 #endif

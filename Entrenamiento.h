@@ -1,5 +1,9 @@
+#ifndef ENTRENAMIENTO
+#define ENTRENAMIENTO
 #include <iostream>
 #include <string.h>
+#include "DtClase.h"
+#include "Clase.h"
 
 // Trabajo Obligatorio 1
 // Entrenamiento.h
@@ -7,7 +11,14 @@
 
 class Entrenamiento : public Clase{
 private:
-    int cantBicicletas;
+    bool enRambla;
 public:
+    Entrenamiento();
+    Entrenamiento(int id, string n, turno t,Inscripcion *insc[MAX_INSCRIPCIONES], bool enRam);
+    bool getRambla();
+    void setRambla(bool r);
     int cupo();
+    ~Entrenamiento();
 };
+
+#endif

@@ -1,6 +1,9 @@
 #ifndef DTSPINNING
 #define DTSPINNING
+#include <iostream>
+#include <string.h>
 #include "DtClase.h"
+#include "Clase.h"
 
 class DtSpinning: public DtClase{
 private:

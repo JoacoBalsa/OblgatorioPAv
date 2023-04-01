@@ -1,3 +1,5 @@
+#ifndef SPINNING 
+#define SPINNING 
 #include <iostream>
 #include <string.h>
 #include "DtClase.h"
@@ -7,9 +9,16 @@
 // Socio.h
 // Modulo de la clase Socio.
 
-class spinning: public clase{
+class Spinning: public Clase{
 private:
     int cantBicicletas;
 public:
-    int cupo();
+    Spinning(); //Constructor default
+    Spinning(int id, string nombre, turno turno, Inscripcion *insc[MAX_INSCRIPCIONES], int cantBicicletas); //Constructor por parametros
+    int getCantBicicletas(); //Getter
+    void setCantBicicletas(int cantBicicletas); //Setter
+    int cupo(); //Operacion
+    ~Spinning(); //Destructor
 };
+
+#endif

@@ -19,6 +19,14 @@ private:
     Fecha fecha;
     //Pseudoatributo
     Socio socio;
+public:
+    Inscripcion();
+    Inscripcion(Fecha fecha, Socio socio);
+    Fecha getFecha();
+    void setFecha(Fecha fecha);
+    Socio getSocio();
+    void setSocio(Socio socio);
+    ~Inscripcion();
 };
 
 #endif
