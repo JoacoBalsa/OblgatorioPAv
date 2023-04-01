@@ -1,12 +1,11 @@
+// Trabajo Obligatorio 1
+// Clase.h
+// Modulo de la clase Clase.
 #ifndef DTCLASE
 #define DTCLASE
 #include <iostream>
 #include <string>
 #include "Turno.h"
-
-// Trabajo Obligatorio 1
-// Clase.h
-// Modulo de la clase Clase.
 
 class DtClase{
 private:

@@ -9,18 +9,18 @@
 
 using namespace std;
 
-class Fecha{
+class DtFecha{
 private:
     int dia;
     int mes;
     int anio;
 public:
-    Fecha(); //Constructor por defecto 
-    Fecha(int d, int m, int a); //Constructor por parametros
-    Fecha(Fecha &fec); //Constructor por copia
+    DtFecha(); //Constructor por defecto 
+    DtFecha(int d, int m, int a); //Constructor por parametros
+    DtFecha(Fecha &fec); //Constructor por copia
     void setFecha(int d, int m, int a); //Constructor por fecha
     Fecha *getFecha();
-    ~Fecha();
+    ~DtFecha();
 };
 
 #endif;

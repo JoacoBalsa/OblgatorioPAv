@@ -2,7 +2,7 @@
 #define INSCRIPCION
 #include <iostream>
 #include <string.h>
-#include "Fecha.h"
+#include "DtFecha.h"
 #include "DtSocio"
 
 #define MAX_INSCRIPCIONES 50
@@ -16,14 +16,14 @@ using namespace std;
 class Inscripcion{
 private:
     //Atributo
-    Fecha fecha;
+    DtFecha fecha;
     //Pseudoatributo
     Socio socio;
 public:
     Inscripcion();
-    Inscripcion(Fecha fecha, Socio socio);
-    Fecha getFecha();
-    void setFecha(Fecha fecha);
+    Inscripcion(DtFecha fecha, Socio socio);
+    DtFecha getFecha();
+    void setFecha(DtFecha fecha);
     Socio getSocio();
     void setSocio(Socio socio);
     ~Inscripcion();
