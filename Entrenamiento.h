@@ -14,7 +14,7 @@ private:
     bool enRambla;
 public:
     Entrenamiento();
-    Entrenamiento(int id, string n, turno t,Inscripcion *insc[MAX_INSCRIPCIONES], bool enRam);
+    Entrenamiento(int id, string n, turno t, bool enRam);
     bool getRambla();
     void setRambla(bool r);
     int cupo();

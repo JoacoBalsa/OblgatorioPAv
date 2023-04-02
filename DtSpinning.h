@@ -17,7 +17,6 @@ public:
     DtSpinning(int id, string nombre, turno turno, int cantBicicletas); 
     int getCantBicicletas(); 
     void setCantBicicletas(int cantBicicletas); 
-    int cupo(); 
     ~DtSpinning(); 
 };
 

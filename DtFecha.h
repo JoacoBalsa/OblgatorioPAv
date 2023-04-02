@@ -17,9 +17,9 @@ private:
 public:
     DtFecha(); 
     DtFecha(int d, int m, int a); 
-    DtFecha(Fecha &fec); 
+    DtFecha(DtFecha &fec); 
     void setFecha(int d, int m, int a); 
-    Fecha *getFecha();
+    DtFecha *getFecha();
     ~DtFecha();
 };
 

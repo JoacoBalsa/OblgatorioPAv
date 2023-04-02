@@ -14,7 +14,7 @@ private:
     int cantBicicletas;
 public:
     Spinning(); 
-    Spinning(int id, string nombre, turno turno, Inscripcion *insc[MAX_INSCRIPCIONES], int cantBicicletas); 
+    Spinning(int id, string nombre, turno turno, int cantBicicletas); 
     int getCantBicicletas(); 
     void setCantBicicletas(int cantBicicletas); 
     int cupo(); 
