@@ -16,4 +16,6 @@
 void agregarSocio(string ci, string nombre);
 //Crea un nuevo socio en el sistema. En caso de ya existir, levanta la excepcion std::invalid_argument
 
+void agregarClase(DtClase& clase);
+
 #endif
