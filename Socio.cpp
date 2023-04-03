@@ -1,4 +1,8 @@
 #include "Socio.h"
+#include <iostream>
+#include <string.h>
+
+using namespace std;
 
 Socio::Socio(){}
 
@@ -8,7 +12,7 @@ Socio::Socio(int CI, string nombre){
 }
 
 int Socio::getCI(){
-    return this->CI
+    return this->CI;
 }
 
 void Socio::setCI(int CI){

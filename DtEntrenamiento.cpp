@@ -1,8 +1,14 @@
 #include "DtEntrenamiento.h"
+#include "Turno.h"
+#include "DtClase.h"
+#include <string.h>
+#include <iostream>
+
+using namespace std;
 
 DtEntrenamiento::DtEntrenamiento(){}
 
-DtEntrenamiento::DtEntrenamiento(int id, string n, turno t, bool enRam):DtClase(id,n,t){
+DtEntrenamiento::DtEntrenamiento(int id, string n, turno t, bool enRam):DtClase(id, n, t){
     this->enRambla = enRam;
 }
 

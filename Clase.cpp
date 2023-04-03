@@ -1,27 +1,32 @@
 #include "Clase.h"
+#include <iostream>
+#include <string.h>
+#include "Turno.h"
+
+using namespace std;
 
 Clase::Clase(){}
-Clase::Clase(int id, string nombre, turno turno){
+Clase::Clase(int id, string nombre, turno t){
     this->id = id;
     this->nombre = nombre;
-    this->turno = turno;
+    this->t = t;
 }
 int Clase::getID(){
     return this->id;
 }
-int Clase::setID(int id){
+void Clase::setID(int id){
     this->id = id;
 }
 string Clase::getNombre(){
     return this->nombre;
 }
 void Clase::setNombre(string nombre){
-    this->nombre = nomrbe;
+    this->nombre = nombre;
 }
 turno Clase::getTurno(){
-    return this->turno;
+    return this->t;
 }
 void Clase::setTurno(turno turno){
-    this->turno = turno;
+    this->t = turno;
 }
 Clase::~Clase(){}

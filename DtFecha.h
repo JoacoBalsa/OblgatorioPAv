@@ -18,9 +18,13 @@ public:
     DtFecha(); 
     DtFecha(int d, int m, int a); 
     DtFecha(DtFecha &fec); 
-    void setFecha(int d, int m, int a); 
-    DtFecha *getFecha();
+    void setDia(int d);
+    void setMes(int m);
+    void setAnio(int a); 
+    int getDia();
+    int getMes();
+    int getAnio();
     ~DtFecha();
 };
 
-#endif;
+#endif

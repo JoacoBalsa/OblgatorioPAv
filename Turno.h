@@ -1,5 +1,5 @@
-#ifndef TURNO_H
-#define TURNO_H
+#ifndef TURNO
+#define TURNO
 
 // Trabajo Obligatorio 1
 // Turno.h

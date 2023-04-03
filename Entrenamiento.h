@@ -1,13 +1,15 @@
 #ifndef ENTRENAMIENTO
 #define ENTRENAMIENTO
 #include <iostream>
-#include <string.h>
+#include <string>
 #include "DtClase.h"
 #include "Clase.h"
 
 // Trabajo Obligatorio 1
 // Entrenamiento.h
 // Modulo de la clase Entrenamiento.
+
+using namespace std;
 
 class Entrenamiento : public Clase{
 private:

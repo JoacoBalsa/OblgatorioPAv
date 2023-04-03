@@ -1,4 +1,8 @@
 #include "DtSocio.h"
+#include <string.h>
+#include <iostream>
+
+using namespace std;
 
 DtSocio::DtSocio(){}
 
@@ -8,7 +12,7 @@ DtSocio::DtSocio(int CI, string nombre){
 }
 
 int DtSocio::getCI(){
-    return this->CI
+    return this->CI;
 }
 
 void DtSocio::setCI(int CI){

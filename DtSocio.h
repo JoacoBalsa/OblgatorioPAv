@@ -1,6 +1,9 @@
 #ifndef DTSOCIO
 #define DTSOCIO
-#include <string>
+#include <string.h>
+#include <iostream>
+
+using namespace std;
 
 // Trabajo Obligatorio 1
 // DTSocio.h

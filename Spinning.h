@@ -1,13 +1,15 @@
 #ifndef SPINNING 
 #define SPINNING 
 #include <iostream>
-#include <string.h>
+#include <string>
 #include "DtClase.h"
 #include "Clase.h"
 
 // Trabajo Obligatorio 1
 // Socio.h
 // Modulo de la clase Socio.
+
+using namespace std;
 
 class Spinning: public Clase{
 private:

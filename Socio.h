@@ -1,6 +1,10 @@
 #ifndef SOCIO 
 #define SOCIO
 #include <string>
+#include <iostream>
+#include <string>
+
+using namespace std;
 
 // Trabajo Obligatorio 1
 // Socio.h

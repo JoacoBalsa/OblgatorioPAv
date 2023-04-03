@@ -1,4 +1,8 @@
 #include "Entrenamiento.h"
+#include <iostream>
+#include <string.h>
+
+using namespace std;
 
 Entrenamiento::Entrenamiento(){}
 

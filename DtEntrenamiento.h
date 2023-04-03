@@ -1,7 +1,11 @@
 #ifndef DTENTRENAMIENTO
 #define DTENTRENAMIENTO
 #include <iostream>
-#include <string.h>
+#include <string>
+#include "Turno.h"
+#include "DtClase.h"
+
+using namespace std;
 
 // Trabajo Obligatorio 1
 // DtEntrenamiento.h

@@ -1,13 +1,15 @@
 #ifndef DTSPINNING
 #define DTSPINNING
 #include <iostream>
-#include <string.h>
+#include <string>
 #include "DtClase.h"
 #include "Clase.h"
 
 // Trabajo Obligatorio 1
 // DtSpinning.h
 // Modulo del DataType Spinning.
+
+using namespace std;
 
 class DtSpinning: public DtClase{
 private:
