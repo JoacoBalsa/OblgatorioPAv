@@ -14,8 +14,15 @@
 #include "Turno.h"
 
 void agregarSocio(string ci, string nombre);
-//Crea un nuevo socio en el sistema. En caso de ya existir, levanta la excepcion std::invalid_argument
+//Crea un nuevo socio en el sistema.
 
 void agregarClase(DtClase& clase);
+// Crea una nueva clase en el sistema.
+
+void agregarInscripcion(string ciSocio, int idClase, DtFecha fecha);
+// Crea una inscripcion de un socio a una clase.
+
+void borrarInscripcion (string ciSocio, int idClase);
+// Borra la inscripcion de un socio a una clase.
 
 #endif

@@ -17,6 +17,7 @@ private:
 public:
     DtEntrenamiento();
     DtEntrenamiento(int id, string n, turno t, bool enRam);
+    DtEntrenamiento(DtEntrenamiento &entrenamiento);
     bool getRambla();
     void setRambla(bool r);
     ~DtEntrenamiento();

@@ -11,6 +11,9 @@ DtEntrenamiento::DtEntrenamiento(){}
 DtEntrenamiento::DtEntrenamiento(int id, string n, turno t, bool enRam):DtClase(id, n, t){
     this->enRambla = enRam;
 }
+DtEntrenamiento::DtEntrenamiento(DtEntrenamiento &entrenamiento):DtClase(entrenamiento){
+    this->enRambla = entrenamiento.enRambla;
+}
 
 bool DtEntrenamiento::getRambla(){
     return this->enRambla;

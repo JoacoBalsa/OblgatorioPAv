@@ -18,6 +18,7 @@ private:
 public:
     DtClase();
     DtClase(int id, string nombre, turno turno);
+    DtClase(DtClase &clase);
     int getID();
     void setID(int id);
     string getNombre();

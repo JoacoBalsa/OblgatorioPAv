@@ -10,6 +10,11 @@ DtClase::DtClase(int id, string nombre, turno turno){
     this->nombre = nombre;
     this->t = turno;
 }
+DtClase::DtClase(DtClase &clase){
+    this->id = clase.id;
+    this->nombre = clase.nombre;
+    this->t = clase.t;
+}
 int DtClase::getID(){
     return this->id;
 }

@@ -8,6 +8,9 @@ DtSpinning::DtSpinning(){}
 DtSpinning::DtSpinning(int id, string nombre, turno turno, int cantBicicletas):DtClase(id,nombre,turno){
     this->cantBicicletas = cantBicicletas;
 }
+DtSpinning::DtSpinning(DtSpinning &Spinning):DtClase(Spinning){
+    this->cantBicicletas = Spinning.cantBicicletas;
+}
 int DtSpinning::getCantBicicletas(){
     return this->cantBicicletas;
 }
