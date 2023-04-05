@@ -136,8 +136,8 @@ void menuAgregarInscripcion(){
     int idC, dia, mes, anio;
     string ciS;
 
-    cout << "▓▓▓▓▓▓▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
-    cout << "▓▓▓▓▓▓▒▒▒▒▒▒▒▒ AGREGAR INSCRIPCION ▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
+    cout << "▓▓▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
+    cout << "▓▓▓▓▓▓▒▒▒▒▒▒▒ AGREGAR INSCRIPCION ▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
     cout << "CI del Socio: ";
     cin >> ciS;
     cout << "ID de Clase: ";
@@ -170,8 +170,8 @@ void menu(){
     cout << "3. Agregar Inscripcion" << endl;
     cout << "4. Borrar Inscripcion" << endl;
     cout << "5. Salir" << endl;
-    cout << "▓▓▓▓▓▓▒▒▒▒▒▒░░░░░░ MENU ░░░░░░▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
-    cout << "Ingrese una opcion: ";
+    cout << "\nIngrese una opcion: ";
+    
 }
 
 // Main
@@ -183,32 +183,35 @@ int main(){
     cin >> opc;
     while(opc != 5){
         switch (opc){
-        case 1: 
-                try{
-                    menuAgregarSocio();
-                }
-                catch(invalid_argument& e){
-                    cout<< e.what() << endl;
-                }
-                break;
-        case 2: 
-                try{
-                    menuAgregarClase();
-                }
-                catch(invalid_argument& e){
-                    cout<< e.what() << endl;
-                }
-                break;
-        case 3: cout << "Agrego Inscripcion" << endl;
-                try{
-                    menuAgregarInscripcion();
-                }
-                catch(invalid_argument& e){
-                    cout<< e.what() << endl;
-                }
-                break;
-        case 4: cout << "Borro Inscripcion" << endl;
-                break;
+            case 1: 
+                    try{
+                        menuAgregarSocio();
+                    }
+                    catch(invalid_argument& e){
+                        cout<< e.what() << endl;
+                    }
+                    break;
+            case 2: 
+                    try{
+                        menuAgregarClase();
+                    }
+                    catch(invalid_argument& e){
+                        cout<< e.what() << endl;
+                    }
+                    break;
+            case 3: cout << "Agrego Inscripcion" << endl;
+                    try{
+                        menuAgregarInscripcion();
+                    }
+                    catch(invalid_argument& e){
+                        cout<< e.what() << endl;
+                    }
+                    break;
+            case 4: cout << "Borro Inscripcion" << endl;
+                    break;
+            default:cout << colClase.c[0] << endl;
+                    break;
+                        
         }
         menu();
         cin >> opc;
@@ -216,3 +219,4 @@ int main(){
     cout << "Me voy a la mierda" << endl;
     return 0;
 }
+

@@ -20,6 +20,7 @@ public:
     DtSpinning(DtSpinning &Spinning); 
     int getCantBicicletas(); 
     void setCantBicicletas(int cantBicicletas); 
+    friend ostream& operator <<(ostream&, DtSpinning&);
     ~DtSpinning(); 
 };
 

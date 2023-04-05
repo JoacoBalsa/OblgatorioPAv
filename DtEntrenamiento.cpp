@@ -23,4 +23,12 @@ void DtEntrenamiento::setRambla(bool r){
     this->enRambla = r;
 }
 
+ostream& operator <<(ostream& salida, DtEntrenamiento& entrenamiento){
+    if(entrenamiento.enRambla)
+        cout << entrenamiento << " En rambla: Si" << endl;
+    else
+        cout << entrenamiento << " En rambla: No" << endl;
+  return salida;
+}
+
 DtEntrenamiento::~DtEntrenamiento(){}

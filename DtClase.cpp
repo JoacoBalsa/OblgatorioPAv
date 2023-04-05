@@ -1,6 +1,8 @@
 #include "DtClase.h"
 #include <string.h>
 #include <iostream>
+#include "DtSpinning.h"
+#include "DtEntrenamiento.h"
 
 using namespace std;
 
@@ -33,4 +35,13 @@ turno DtClase::getTurno(){
 void DtClase::setTurno(turno turno){
     this->t = turno;
 }
+
+ostream& operator << (ostream& salida, DtClase& clase){
+  try{
+    DtSpinning& dts = dynamic_cast<DtSpinning&>(clase);
+    salida << clase.getID() << clase.getID() << clase.getTurno() << dts.getCantBicicletas() << endl;
+    return salida;
+  }catch(bad_cast){}
+}
+
 DtClase::~DtClase(){}

@@ -20,6 +20,7 @@ public:
     DtEntrenamiento(DtEntrenamiento &entrenamiento);
     bool getRambla();
     void setRambla(bool r);
+    friend ostream& operator <<(ostream&, DtEntrenamiento&);
     ~DtEntrenamiento();
 };
 

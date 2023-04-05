@@ -17,4 +17,10 @@ int DtSpinning::getCantBicicletas(){
 void DtSpinning::setCantBicicletas(int cantBicicletas){
     this->cantBicicletas = cantBicicletas;
 }
+
+ostream& operator <<(ostream& salida,DtSpinning& spinning){
+  cout << spinning << " Cantidad de bicilcetas: " << spinning.cantBicicletas << endl;
+  return salida;
+} 
+
 DtSpinning::~DtSpinning(){}
