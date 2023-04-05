@@ -12,7 +12,7 @@ struct Socios {
 } colSocio;
 
 struct Clases {
-    DtClase* c[MAX_CLASES];
+    Clase* c[MAX_CLASES];
     int tope;
 }   colClase;
 
@@ -45,10 +45,10 @@ void agregarSocio(string ci, string nombre){
 
 void menuAgregarClase(){
     if(colClase.tope < MAX_CLASES){
-        int id, aux,i = 0;
+        int id, aux,i = 0, opc, cantB;
         string nom, enRam;
         turno t;
-        DtClase c;
+        bool ram;
         cout << "Ingrese un id para la clase: ";
         cin >> id;
         cout << "Ingrese un nombre para la clase: ";
@@ -68,39 +68,21 @@ void menuAgregarClase(){
             throw std::invalid_argument("Turno invalido\n");
             break;
         }
-        c.setID(id);
-        c.setNombre(nom);
-        c.setTurno(t);
-        agregarClase(c);
-    }else
-        throw std::invalid_argument("Limite de clases excedido\n");
-}
-
-void agregarClase(DtClase& clase){
-    int i = 0, aux, cantB;
-    bool ram;
-    string enRam;
-    DtSpinning s;
-    while(i < colClase.tope && colClase.c[i]->getID() != clase.getID())
-        i++;
-    if(i == colClase.tope){
-        colClase.tope++;
-        /*colClase.c[i]->setID(clase.getID());
-        colClase.c[i]->setNombre(clase.getNombre());
-        colClase.c[i]->setTurno(clase.getTurno());*/
+        DtEntrenamiento entrenamiento;
+        DtSpinning spinning;
         cout << "Seleccione modalidad" << endl;
         cout << "1.Spinning\n2.Entrenamiento" << endl;
-        cin >> aux;
-        switch (aux)
-        {
-        case 1: cout << "Cuantas bicicletas va a tener la clase: ";
-                cin >> cantB;
-                s = DtSpinning(clase.getID(), clase.getNombre(), clase.getTurno(), cantB);
-                colClase.c[i]->setID(s.getID());
-                colClase.c[i]->setNombre(s.getNombre());
-                colClase.c[i]->setTurno(s.getTurno());
+        cin >> opc;
+        switch (opc){
+            case 1: cout << "Ingrese la cantidad de bicicletas: ";
+                    cin >> cantB;
+                    if(cantB <= 50){
+                        spinning = DtSpinning(id, nom, t, cantB);
+                        agregarClase(spinning);
+                    }else
+                        throw std::invalid_argument("Limite de bicicletas excedido\n");
             break;
-        case 2: cout << "¿Va a ser en la rambla la clase? ";
+            case 2: cout << "¿Va a ser en la rambla la clase? ";
             cout << "\nSi/No"<< endl;
             cin >> enRam;
             if(enRam == "Si" || enRam == "si" || enRam == "SI")
@@ -109,15 +91,40 @@ void agregarClase(DtClase& clase){
                 ram = false;
             else
                 throw std::invalid_argument("Comando incorrecto\n");
-                c = DtEntrenamiento(id, nom, t, ram);
             break;
-        default:
-            throw std::invalid_argument("Tipo de clase invalido\n");
-            break;
+            entrenamiento = DtEntrenamiento(id,nom,t,ram);
+            agregarClase(entrenamiento);
         }
-        cout << "Clase registrada exitosamente" << endl;
     }else
+        throw std::invalid_argument("Limite de clases excedido\n");
+}
+
+void agregarClase(DtClase& clase){
+    int i = 0;
+    while(i < colClase.tope && colClase.c[i]->getID() != clase.getID())
+        i++;
+    if(i != colClase.tope){
         throw std::invalid_argument("Clase ya registrada\n");
+    }
+    try{
+        DtSpinning& dts = dynamic_cast<DtSpinning&>(clase);
+        Spinning *spinning = new Spinning (dts.getID(),
+                                           dts.getNombre(),
+                                           dts.getTurno(),
+                                           dts.getCantBicicletas());
+        colClase.c[i] = spinning;
+        colClase.tope++;                                
+    } catch(bad_cast){
+        try{
+            DtEntrenamiento& dte = dynamic_cast<DtEntrenamiento&>(clase);
+            Entrenamiento *entrenamiento = new Entrenamiento (dte.getID(),
+                                                              dte.getNombre(),
+                                                              dte.getTurno(),
+                                                              dte.getRambla());
+            colClase.c[i] = entrenamiento;
+            colClase.tope++;
+        }catch(bad_cast){}
+    }
 }
 
 void agregarInscripcion(string ciSocio, int idClase, DtFecha fecha){
