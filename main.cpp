@@ -1,7 +1,7 @@
 #include <iostream>
 #include "main.h"
 #define MAX_SOCIOS 10
-#define MAX_CLASES 5
+#define MAX_CLASES 2
 
 using namespace std; 
 
@@ -48,13 +48,21 @@ void menuAgregarClase(){
         int id, aux,i = 0, opc, cantB;
         string nom, enRam;
         turno t;
-        bool ram;
+        bool ram, repetida = true;
         cout << "Ingrese un id para la clase: ";
         cin >> id;
+        while(i < colClase.tope && colClase.c[i]->getID() != id){
+            i++;
+            if(i == colClase.tope)
+                repetida = false;
+        }
+        if(colClase.tope != 0 && repetida){
+            throw std::invalid_argument("ID ya en uso\n");
+        }
         cout << "Ingrese un nombre para la clase: ";
         cin >> nom;
         cout << "Seleccione un turno para la clase: " << endl;
-        cout << "1. Manana\n2. Tarde\n3.Noche"<< endl;
+        cout << "1. Manana\n2. Tarde\n3. Noche"<< endl;
         cin >> aux;
         switch (aux)
         {
@@ -100,31 +108,49 @@ void menuAgregarClase(){
 }
 
 void agregarClase(DtClase& clase){
-    int i = 0;
-    while(i < colClase.tope && colClase.c[i]->getID() != clase.getID())
-        i++;
-    if(i != colClase.tope){
-        throw std::invalid_argument("Clase ya registrada\n");
-    }
     try{
         DtSpinning& dts = dynamic_cast<DtSpinning&>(clase);
         Spinning *spinning = new Spinning (dts.getID(),
                                            dts.getNombre(),
                                            dts.getTurno(),
                                            dts.getCantBicicletas());
-        colClase.c[i] = spinning;
-        colClase.tope++;                                
+        colClase.c[colClase.tope] = spinning;
+        colClase.tope++;
+        cout << "Clase registrada con exito\n" << endl;                             
     } catch(bad_cast){
         try{
+            cout << "Entro al segundo try";
             DtEntrenamiento& dte = dynamic_cast<DtEntrenamiento&>(clase);
             Entrenamiento *entrenamiento = new Entrenamiento (dte.getID(),
                                                               dte.getNombre(),
                                                               dte.getTurno(),
                                                               dte.getRambla());
-            colClase.c[i] = entrenamiento;
+            colClase.c[colClase.tope] = entrenamiento;
             colClase.tope++;
+            cout << "Clase registrada con exito\n" << endl;
         }catch(bad_cast){}
     }
+}
+
+void menuAgregarInscripcion(){
+    int idC, dia, mes, anio;
+    string ciS;
+
+    cout << "▓▓▓▓▓▓▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
+    cout << "▓▓▓▓▓▓▒▒▒▒▒▒▒▒ AGREGAR INSCRIPCION ▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
+    cout << "CI del Socio: ";
+    cin >> ciS;
+    cout << "ID de Clase: ";
+    cin >> idC;
+    cout << "FECHA INICIO" << endl;
+    cout << "DIA: ";
+    cin >> dia;
+    cout << "MES: ";
+    cin >> mes;
+    cout << "ANIO: ";
+    cin >> anio;
+    DtFecha f = DtFecha(dia, mes, anio);
+    agregarInscripcion(ciS, idC, f);
 }
 
 void agregarInscripcion(string ciSocio, int idClase, DtFecha fecha){
@@ -173,8 +199,13 @@ int main(){
                     cout<< e.what() << endl;
                 }
                 break;
-                break;
         case 3: cout << "Agrego Inscripcion" << endl;
+                try{
+                    menuAgregarInscripcion();
+                }
+                catch(invalid_argument& e){
+                    cout<< e.what() << endl;
+                }
                 break;
         case 4: cout << "Borro Inscripcion" << endl;
                 break;

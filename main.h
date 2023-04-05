@@ -13,11 +13,17 @@
 #include "Spinning.h"
 #include "Turno.h"
 
+void menuAgregarSocio();
+
 void agregarSocio(string ci, string nombre);
-//Crea un nuevo socio en el sistema.
+//Crea un nuevo socio en el sistema.\
+
+void menuAgregarClase();
 
 void agregarClase(DtClase& clase);
 // Crea una nueva clase en el sistema.
+
+void menuAgregarInscripcion();
 
 void agregarInscripcion(string ciSocio, int idClase, DtFecha fecha);
 // Crea una inscripcion de un socio a una clase.
