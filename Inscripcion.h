@@ -18,7 +18,7 @@ class Inscripcion{
 private:
     //Atributo
     DtFecha fecha;
-    //Pseudoatributo
+    //Pseudoatributos
     DtSocio socio;
     DtClase clase;
 public:

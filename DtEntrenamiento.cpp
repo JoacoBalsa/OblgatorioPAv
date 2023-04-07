@@ -11,6 +11,7 @@ DtEntrenamiento::DtEntrenamiento(){}
 DtEntrenamiento::DtEntrenamiento(int id, string n, turno t, bool enRam):DtClase(id, n, t){
     this->enRambla = enRam;
 }
+
 DtEntrenamiento::DtEntrenamiento(DtEntrenamiento &entrenamiento):DtClase(entrenamiento){
     this->enRambla = entrenamiento.enRambla;
 }
@@ -24,10 +25,10 @@ void DtEntrenamiento::setRambla(bool r){
 }
 
 ostream& operator <<(ostream& salida, DtEntrenamiento& entrenamiento){
-    if(entrenamiento.enRambla)
-        cout << entrenamiento << " En rambla: Si" << endl;
+    if(entrenamiento.getRambla())
+        salida <<"ID: " << entrenamiento.getID() << endl << "Nombre: " << entrenamiento.getNombre() << endl << "Turno: " << entrenamiento.getTurno() << endl <<  "En rambla: Si";
     else
-        cout << entrenamiento << " En rambla: No" << endl;
+        salida <<"ID: " << entrenamiento.getID() << endl << "Nombre: " << entrenamiento.getNombre() << endl << "Turno: " << entrenamiento.getTurno() << endl <<  "En rambla: No";
   return salida;
 }
 

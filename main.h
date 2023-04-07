@@ -16,7 +16,7 @@
 void menuAgregarSocio();
 
 void agregarSocio(string ci, string nombre);
-//Crea un nuevo socio en el sistema.\
+//Crea un nuevo socio en el sistema.
 
 void menuAgregarClase();
 

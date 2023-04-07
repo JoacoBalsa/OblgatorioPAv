@@ -1,7 +1,7 @@
 #include <iostream>
 #include "main.h"
 #define MAX_SOCIOS 10
-#define MAX_CLASES 2
+#define MAX_CLASES 10
 
 using namespace std; 
 
@@ -91,17 +91,17 @@ void menuAgregarClase(){
                         throw std::invalid_argument("Limite de bicicletas excedido\n");
             break;
             case 2: cout << "¿Va a ser en la rambla la clase? ";
-            cout << "\nSi/No"<< endl;
-            cin >> enRam;
-            if(enRam == "Si" || enRam == "si" || enRam == "SI")
-                ram = true;
-            else if (enRam == "No" || enRam == "no" || enRam == "NO")
-                ram = false;
-            else
-                throw std::invalid_argument("Comando incorrecto\n");
+                    cout << "\nSi/No"<< endl;
+                    cin >> enRam;
+                    if(enRam == "Si" || enRam == "si" || enRam == "SI")
+                        ram = true;
+                    else if (enRam == "No" || enRam == "no" || enRam == "NO")
+                        ram = false;
+                    else
+                        throw std::invalid_argument("Comando incorrecto\n");
+                    entrenamiento = DtEntrenamiento(id,nom,t,ram);
+                    agregarClase(entrenamiento);
             break;
-            entrenamiento = DtEntrenamiento(id,nom,t,ram);
-            agregarClase(entrenamiento);
         }
     }else
         throw std::invalid_argument("Limite de clases excedido\n");
@@ -130,6 +130,26 @@ void agregarClase(DtClase& clase){
             cout << "Clase registrada con exito\n" << endl;
         }catch(bad_cast){}
     }
+    /*DtClase *c = &clase;
+    DtSpinning* dts = dynamic_cast<DtSpinning*>(c);
+    if(dts != NULL){
+        Spinning *spinning = new Spinning (dts->getID(),
+                                           dts->getNombre(),
+                                           dts->getTurno(),
+                                           dts->getCantBicicletas());
+        colClase.c[colClase.tope] = spinning;
+        colClase.tope++;
+        cout << "Clase registrada con exito\n" << endl;
+    }else{                          
+        DtEntrenamiento* dte = dynamic_cast<DtEntrenamiento*>(c);
+        Entrenamiento *entrenamiento = new Entrenamiento (dte->getID(),
+                                                          dte->getNombre(),
+                                                          dte->getTurno(),
+                                                          dte->getRambla());
+        colClase.c[colClase.tope] = entrenamiento;
+        colClase.tope++;
+        cout << "Clase registrada con exito\n" << endl;
+    } */  
 }
 
 void menuAgregarInscripcion(){
@@ -209,9 +229,6 @@ int main(){
                     break;
             case 4: cout << "Borro Inscripcion" << endl;
                     break;
-            default:cout << colClase.c[0] << endl;
-                    break;
-                        
         }
         menu();
         cin >> opc;

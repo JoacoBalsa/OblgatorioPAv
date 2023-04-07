@@ -25,15 +25,19 @@ void DtFecha::setDia(int d){
 void DtFecha::setMes(int m){
     this->mes = m;
 }
+
 void DtFecha::setAnio(int a){
     this->anio = a;
 } 
+
 int DtFecha::getDia(){
     return this->dia;
 }
+
 int DtFecha::getMes(){
     return this->mes;
 }
+
 int DtFecha::getAnio(){
     return this->anio;
 }
