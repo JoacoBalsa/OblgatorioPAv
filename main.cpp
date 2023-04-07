@@ -20,6 +20,8 @@ struct Clases {
 void menuAgregarSocio(){
     if(colSocio.tope < MAX_SOCIOS){
         string ci, nombre;
+        cout << "▓▓▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░░░░░░░░▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
+        cout << "▓▓▓▓▓▓▒▒▒▒▒▒▒ AGREGAR SOCIO ▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
         cout << "Ingrese un Nombre para el socio: ";
         cin >> nombre;
         cout << "Ingrese una CI: ";
@@ -49,6 +51,8 @@ void menuAgregarClase(){
         string nom, enRam;
         turno t;
         bool ram, repetida = true;
+        cout << "▓▓▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░░░░░░░░▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
+        cout << "▓▓▓▓▓▓▒▒▒▒▒▒▒ AGREGAR CLASE ▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
         cout << "Ingrese un id para la clase: ";
         cin >> id;
         while(i < colClase.tope && colClase.c[i]->getID() != id){
@@ -119,7 +123,6 @@ void agregarClase(DtClase& clase){
         cout << "Clase registrada con exito\n" << endl;                             
     } catch(bad_cast){
         try{
-            cout << "Entro al segundo try";
             DtEntrenamiento& dte = dynamic_cast<DtEntrenamiento&>(clase);
             Entrenamiento *entrenamiento = new Entrenamiento (dte.getID(),
                                                               dte.getNombre(),
@@ -182,9 +185,9 @@ void borrarInscripcion (string ciSocio, int idClase){
 }
 
 void menu(){
-    cout << "▓▓▓▓▓▓▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
-    cout << "▓▓▓▓▓▓▒▒▒▒▒▒░░ Laboratorio 1 ░▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
-    cout << "▓▓▓▓▓▓▒▒▒▒▒▒░░░░░░ MENU ░░░░░░▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
+    cout << "▓▓▓▓▓▓▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
+    cout << "▓▓▓▓▓▓▒▒▒▒▒▒░░ Laboratorio 1 ░░▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
+    cout << "▓▓▓▓▓▓▒▒▒▒▒▒░░░░░░ MENU ░░░░░░░▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
     cout << "1. Agregar Socio" << endl;
     cout << "2. Agregar Clase" << endl;
     cout << "3. Agregar Inscripcion" << endl;
@@ -219,7 +222,7 @@ int main(){
                         cout<< e.what() << endl;
                     }
                     break;
-            case 3: cout << "Agrego Inscripcion" << endl;
+            case 3:
                     try{
                         menuAgregarInscripcion();
                     }
@@ -227,8 +230,27 @@ int main(){
                         cout<< e.what() << endl;
                     }
                     break;
-            case 4: cout << "Borro Inscripcion" << endl;
+            case 4: 
+                    try{
+                        menuBorrarInscripcion();
+                    }
+                    catch(invalid_argument& e){
+                        cout << e.what() << endl;
+                    }
                     break;
+            default:
+                for(int i = 0; i < colClase.tope; i++){
+                    try{
+                    Spinning& clas = dynamic_cast<Spinning&>(*colClase.c[i]);
+                    DtSpinning s = DtSpinning(clas.getID(), clas.getNombre(), clas.getTurno(), clas.getCantBicicletas());
+                    cout << s << "\n-----------------" << endl;
+                    }catch(bad_cast){
+                        Entrenamiento& clas = dynamic_cast<Entrenamiento&>(*colClase.c[i]);
+                        DtEntrenamiento e = DtEntrenamiento(clas.getID(), clas.getNombre(), clas.getTurno(), clas.getRambla());
+                        cout << e << "\n-----------------" << endl;
+                    }
+                }
+                break;
         }
         menu();
         cin >> opc;

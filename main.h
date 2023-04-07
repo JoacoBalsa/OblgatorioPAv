@@ -28,6 +28,8 @@ void menuAgregarInscripcion();
 void agregarInscripcion(string ciSocio, int idClase, DtFecha fecha);
 // Crea una inscripcion de un socio a una clase.
 
+void menuBorrarInscripcion();
+
 void borrarInscripcion (string ciSocio, int idClase);
 // Borra la inscripcion de un socio a una clase.
 

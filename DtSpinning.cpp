@@ -23,7 +23,19 @@ void DtSpinning::setCantBicicletas(int cantBicicletas){
 }
 
 ostream& operator <<(ostream& salida,DtSpinning& spinning){
-  salida <<"ID: " << spinning.getID() << endl << "Nombre: " << spinning.getNombre() << endl << "Turno: " << spinning.getTurno() << endl <<  "Cantidad de bicicletas: " << spinning.getCantBicicletas();
+  salida <<"ID: " << spinning.getID() << endl << "Nombre: " << spinning.getNombre() << endl;
+  switch (spinning.getTurno())
+        {
+        case 0:
+            salida << "Turno: Manana" << "\nCantidad de bicicletas: " << spinning.getCantBicicletas();
+            break;
+        case 1: 
+            salida << "Turno: Tarde" << "\nCantidad de bicicletas: " << spinning.getCantBicicletas();
+            break;
+        case 2:
+            salida << "Turno: Noche" << "\nCantidad de bicicletas: " << spinning.getCantBicicletas();
+            break;
+        } 
   return salida;
 }
 /*  Spinning& ola = dynamic_cast<Spinning&>(*colClase.c[0]);
