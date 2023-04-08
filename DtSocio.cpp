@@ -2,6 +2,10 @@
 #include <string.h>
 #include <iostream>
 
+// Trabajo Obligatorio 1
+// DtSocio.cpp
+// Modulo de implementacion del DataType Socio.
+
 using namespace std;
 
 DtSocio::DtSocio(){}

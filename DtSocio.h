@@ -3,11 +3,11 @@
 #include <string.h>
 #include <iostream>
 
-using namespace std;
-
 // Trabajo Obligatorio 1
 // DTSocio.h
-// Modulo del DataType Socio.
+// Modulo de definicion del DataType Socio.
+
+using namespace std;
 
 class DtSocio{
 private:

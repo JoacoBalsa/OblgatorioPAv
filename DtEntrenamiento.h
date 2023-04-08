@@ -5,11 +5,11 @@
 #include "Turno.h"
 #include "DtClase.h"
 
-using namespace std;
-
 // Trabajo Obligatorio 1
 // DtEntrenamiento.h
-// Modulo del DataType Entrenamiento.
+// Modulo de definicion del DataType Entrenamiento.
+
+using namespace std;
 
 class DtEntrenamiento : public DtClase{
 private:

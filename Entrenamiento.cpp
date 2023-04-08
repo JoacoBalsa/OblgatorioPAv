@@ -2,6 +2,10 @@
 #include <iostream>
 #include <string.h>
 
+// Trabajo Obligatorio 1
+// Entrenamiento.cpp
+// Modulo de definicion de la clase Entrenamiento.
+
 using namespace std;
 
 Entrenamiento::Entrenamiento(){}

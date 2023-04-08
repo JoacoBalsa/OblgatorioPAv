@@ -7,7 +7,7 @@
 
 // Trabajo Obligatorio 1
 // DtSpinning.h
-// Modulo del DataType Spinning.
+// Modulo de implementacion del DataType Spinning.
 
 using namespace std;
 

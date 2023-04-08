@@ -2,6 +2,10 @@
 #include <iostream>
 #include <string.h>
 
+// Trabajo Obligatorio 1
+// Socio.cpp
+// Modulo de definicion de la clase Socio.
+
 using namespace std;
 
 Socio::Socio(){}

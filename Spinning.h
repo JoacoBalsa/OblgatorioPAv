@@ -6,8 +6,8 @@
 #include "Clase.h"
 
 // Trabajo Obligatorio 1
-// Socio.h
-// Modulo de la clase Socio.
+// Spinning.h
+// Modulo de definicion de la clase Spinning.
 
 using namespace std;
 

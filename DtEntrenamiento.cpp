@@ -6,7 +6,7 @@
 
 // Trabajo Obligatorio 1
 // DtEntrenamiento.cpp
-// Modulo definicion del DataType Entrenamiento.
+// Modulo implementacion del DataType Entrenamiento.
 
 using namespace std;
 

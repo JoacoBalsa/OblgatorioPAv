@@ -5,6 +5,10 @@
 #include <iostream>
 #include <string.h>
 
+// Trabajo Obligatorio 1
+// Inscripcion.cpp
+// Modulo de implementacion de la clase Inscripcion.
+
 using namespace std;
 
 Inscripcion::Inscripcion(){}

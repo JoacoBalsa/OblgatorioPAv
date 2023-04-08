@@ -13,6 +13,10 @@
 #include "Spinning.h"
 #include "Turno.h"
 
+// Trabajo Obligatorio 1
+// main.h
+// Modulo de definicion del main.
+
 void menuAgregarSocio();
 
 void agregarSocio(string ci, string nombre);

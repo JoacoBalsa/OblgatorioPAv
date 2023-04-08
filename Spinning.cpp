@@ -2,6 +2,10 @@
 #include <iostream>
 #include <string.h>
 
+// Trabajo Obligatorio 1
+// Spinning.cpp
+// Modulo de definicion de la clase Spinning.
+
 using namespace std;
 
 Spinning::Spinning(){}

@@ -4,8 +4,8 @@
 #include <string.h>
 
 // Trabajo Obligatorio 1
-// DTFecha.h
-// Modulo del DataType Fecha.
+// DtFecha.h
+// Modulo de definicion del DataType Fecha.
 
 using namespace std;
 

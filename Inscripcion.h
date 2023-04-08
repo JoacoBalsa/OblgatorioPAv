@@ -10,7 +10,7 @@
 
 // Trabajo Obligatorio 1
 // Inscripcion.h
-// Modulo de la clase Inscripcion.
+// Modulo de definicion de la clase Inscripcion.
 
 using namespace std;
 

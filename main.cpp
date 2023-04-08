@@ -3,6 +3,10 @@
 #define MAX_SOCIOS 10
 #define MAX_CLASES 10
 
+// Trabajo Obligatorio 1
+// main.cpp
+// Modulo implementacion del main.
+
 using namespace std; 
 
 // Colecciones de socios y clases
@@ -33,16 +37,20 @@ void menuAgregarSocio(){
 }
 
 void agregarSocio(string ci, string nombre){
-    int i = 0;
-    while(i < colSocio.tope && colSocio.s[i]->getCI() != stoi(ci))
-        i++;
-    if(i == colSocio.tope){
-        colSocio.tope++;
-        Socio* nuevoS = new Socio(stoi(ci), nombre);
-        colSocio.s[i] = nuevoS;
-        cout << "Socio registrado exitosamente" << endl;
-    }else
-        throw std::invalid_argument("Socio ya registrado\n");
+    if(colSocio.tope < MAX_SOCIOS){
+        int i = 0;
+
+        while(i < colSocio.tope && colSocio.s[i]->getCI() != stoi(ci)) //Llega hasta el final del arreglo de socios y se fija que haya un socio ya registrado con esa C.I
+            i++;
+        if(i == colSocio.tope){ //Si llego al final quiere decir que no se repitio la C.I
+            colSocio.tope++;
+            Socio* nuevoS = new Socio(stoi(ci), nombre);
+            colSocio.s[i] = nuevoS;
+            cout << "Socio registrado exitosamente" << endl;
+        }else
+            throw std::invalid_argument("Socio ya registrado\n");
+    }else   
+        throw std::invalid_argument("Limite de socios exedido.\n");
 }
 
 void menuAgregarClase(){
@@ -51,6 +59,9 @@ void menuAgregarClase(){
         string nom, enRam;
         turno t;
         bool ram, repetida = true;
+        DtEntrenamiento entrenamiento;
+        DtSpinning spinning;
+
         cout << "▓▓▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░░░░░░░░▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
         cout << "▓▓▓▓▓▓▒▒▒▒▒▒▒ AGREGAR CLASE ▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
         cout << "Ingrese un id para la clase: ";
@@ -60,28 +71,24 @@ void menuAgregarClase(){
             if(i == colClase.tope)
                 repetida = false;
         }
-        if(colClase.tope != 0 && repetida){
+        if(colClase.tope != 0 && repetida)
             throw std::invalid_argument("ID ya en uso\n");
-        }
         cout << "Ingrese un nombre para la clase: ";
         cin >> nom;
         cout << "Seleccione un turno para la clase: " << endl;
         cout << "1. Manana\n2. Tarde\n3. Noche"<< endl;
         cin >> aux;
-        switch (aux)
-        {
-        case 1: t = Manana;
-            break;
-        case 2: t= Tarde;
-            break;
-        case 3: t= Noche;
-            break;
-        default:
-            throw std::invalid_argument("Turno invalido\n");
-            break;
+        switch (aux){
+            case 1: t = Manana;
+                break;
+            case 2: t= Tarde;
+                break;
+            case 3: t= Noche;
+                break;
+            default:
+                throw std::invalid_argument("Turno invalido\n");
+                break;
         }
-        DtEntrenamiento entrenamiento;
-        DtSpinning spinning;
         cout << "Seleccione modalidad" << endl;
         cout << "1.Spinning\n2.Entrenamiento" << endl;
         cin >> opc;
@@ -112,7 +119,7 @@ void menuAgregarClase(){
 }
 
 void agregarClase(DtClase& clase){
-    try{
+    try{//Trata de castear la clase pasada por parametro como Spinning y si no puede la castea como Entrenamiento
         DtSpinning& dts = dynamic_cast<DtSpinning&>(clase);
         Spinning *spinning = new Spinning (dts.getID(),
                                            dts.getNombre(),
@@ -122,7 +129,6 @@ void agregarClase(DtClase& clase){
         colClase.tope++;
         cout << "Clase registrada con exito\n" << endl;                             
     } catch(bad_cast){
-        try{
             DtEntrenamiento& dte = dynamic_cast<DtEntrenamiento&>(clase);
             Entrenamiento *entrenamiento = new Entrenamiento (dte.getID(),
                                                               dte.getNombre(),
@@ -131,7 +137,6 @@ void agregarClase(DtClase& clase){
             colClase.c[colClase.tope] = entrenamiento;
             colClase.tope++;
             cout << "Clase registrada con exito\n" << endl;
-        }catch(bad_cast){}
     }
     /*DtClase *c = &clase;
     DtSpinning* dts = dynamic_cast<DtSpinning*>(c);
@@ -202,6 +207,7 @@ int main(){
     colClase.tope = 0;
     colSocio.tope = 0;
     int opc;
+
     menu();
     cin >> opc;
     while(opc != 5){
@@ -238,7 +244,7 @@ int main(){
                         cout << e.what() << endl;
                     }
                     break;
-            default:
+            default://Opcion unicamente para ver si funciona la sobrecarga de operador y si registra bien las clases
                 for(int i = 0; i < colClase.tope; i++){
                     try{
                     Spinning& clas = dynamic_cast<Spinning&>(*colClase.c[i]);

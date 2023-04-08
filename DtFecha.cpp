@@ -2,6 +2,10 @@
 #include <iostream>
 #include <string.h>
 
+// Trabajo Obligatorio 1
+// DtFecha.h
+// Modulo de implementacion del DataType Fecha.
+
 using namespace std;
 
 DtFecha::DtFecha(){}

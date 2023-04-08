@@ -2,6 +2,10 @@
 #include "DtSpinning.h"
 #include <string.h>
 
+// Trabajo Obligatorio 1
+// DTSpinning.cpp
+// Modulo de implementacion del DataType Spinning.
+
 using namespace std;
 
 DtSpinning::DtSpinning(){}

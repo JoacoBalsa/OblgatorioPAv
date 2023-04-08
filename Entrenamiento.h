@@ -7,7 +7,7 @@
 
 // Trabajo Obligatorio 1
 // Entrenamiento.h
-// Modulo de la clase Entrenamiento.
+// Modulo de definicion de la clase Entrenamiento.
 
 using namespace std;
 

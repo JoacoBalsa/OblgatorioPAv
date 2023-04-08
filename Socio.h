@@ -4,11 +4,11 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 // Trabajo Obligatorio 1
 // Socio.h
-// Modulo de la clase Socio.
+// Modulo de definicion de la clase Socio.
+
+using namespace std;
 
 class Socio{
 private:
