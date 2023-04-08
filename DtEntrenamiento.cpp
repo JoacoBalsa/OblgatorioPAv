@@ -4,6 +4,10 @@
 #include <string.h>
 #include <iostream>
 
+// Trabajo Obligatorio 1
+// DtEntrenamiento.cpp
+// Modulo definicion del DataType Entrenamiento.
+
 using namespace std;
 
 DtEntrenamiento::DtEntrenamiento(){}

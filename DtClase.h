@@ -6,7 +6,7 @@
 
 // Trabajo Obligatorio 1
 // DtClase.h
-// Modulo del DataType Clase.
+// Modulo definicion del DataType Clase.
 
 using namespace std;
 

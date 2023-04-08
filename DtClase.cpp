@@ -4,6 +4,10 @@
 #include "DtSpinning.h"
 #include "DtEntrenamiento.h"
 
+// Trabajo Obligatorio 1
+// DtClase.cpp
+// Modulo de impplementacion del DataType Clase.
+
 using namespace std;
 
 DtClase::DtClase(){}

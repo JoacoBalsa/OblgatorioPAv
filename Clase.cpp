@@ -3,6 +3,10 @@
 #include <string.h>
 #include "Turno.h"
 
+// Trabajo Obligatorio 1
+// Clase.cpp
+// Modulo de implementacion de la clase Clase
+
 using namespace std;
 
 Clase::Clase(){}

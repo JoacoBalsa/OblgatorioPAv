@@ -8,7 +8,7 @@
 
 // Trabajo Obligatorio 1
 // Clase.h
-// Modulo de la clase Clase.
+// Modulo de definicion la clase Clase.
 
 using namespace std;
 
