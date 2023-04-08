@@ -160,6 +160,48 @@ void agregarClase(DtClase& clase){
     } */  
 }
 
+bool existeSocio(int ci){
+    int i = 0;
+    bool existe = false;
+    while(i < colSocio.tope && !existe){ 
+        if(ciS == colSocio.s[i]->getCI())
+            existe = true;
+        i++;
+    }
+    return existe;
+}
+
+bool existeClase(int id){
+    int i = 0;
+    bool existe = false
+    while(i < colClase.tope && !existe){ 
+        if(idC == colClase.c[i]->getID())
+            existe = true;
+    }
+    return existe;
+}
+
+bool diaValido(int dia){
+    if(dia > 0 && dia < 31)
+        return true;
+    else
+        return false;
+}
+
+bool mesValido(int mes){
+    if(mes > 0 && mes < 13)
+        return true;
+    else 
+        return false;
+}
+
+bool anioValido(int anio){
+    if(anio < 1900)
+        return false;
+    else    
+        return true;
+}
+
 void menuAgregarInscripcion(){
     int idC, dia, mes, anio;
     string ciS;
@@ -168,15 +210,29 @@ void menuAgregarInscripcion(){
     cout << "▓▓▓▓▓▓▒▒▒▒▒▒▒ AGREGAR INSCRIPCION ▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
     cout << "CI del Socio: ";
     cin >> ciS;
+    if(!existeSocio(ciS))                                           //Se fija que exista el socio de la inscripcion.
+        throw std::invalid_argument("No existe ese socio.\n");
     cout << "ID de Clase: ";
     cin >> idC;
+    if(!existeClase(idC))                                           //Se fija que exista la clase de la inscripcion.
+        throw std::invalid_argument("No existe esa clase.\n");
+    if(!existeInscripcion(ciS, idC))                                //Se fija que ese socio no este ya inscripto en esa clase.
+        throw std::invalid_argument("Ese usuario ya esta inscripto en esa clase.\n");
+    if(!cupoAlcanzado(idC))                                         //Se fija que todavia hayan cupos en esa clase.
+        throw std::invalid_argument("No hay mas cupos en esa clase.\n");
     cout << "FECHA INICIO" << endl;
     cout << "DIA: ";
     cin >> dia;
+    if(!diaValido(dia))                                             //Se fija que el dia ingresado sea valido.
+        throw std::invalid_argument("Dia no valido.\n");
     cout << "MES: ";
     cin >> mes;
+    if(!mesValido(mes))                                             //Se fija que el mes ingresado sea valido.
+        throw std::invalid_argument("Mes no valido.\n");
     cout << "ANIO: ";
     cin >> anio;
+    if(!anioValido(anio))                                           //Se fija que el anio ingresado sea valido.
+        throw std::invalid_argument("Anio no valido.\n");
     DtFecha f = DtFecha(dia, mes, anio);
     agregarInscripcion(ciS, idC, f);
 }

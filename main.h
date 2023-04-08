@@ -29,6 +29,20 @@ void agregarClase(DtClase& clase);
 
 void menuAgregarInscripcion();
 
+bool existeSocio(int ci);
+
+bool existeClase(int id);
+
+bool existeInscripcion(int ciS, int idC);
+
+bool cupoAlcanzado(int idC);
+
+bool diaValido(int dia);
+
+bool mesValido(int mes);
+
+bool anioValido(int anio);
+
 void agregarInscripcion(string ciSocio, int idClase, DtFecha fecha);
 // Crea una inscripcion de un socio a una clase.
 
