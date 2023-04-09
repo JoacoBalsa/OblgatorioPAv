@@ -31,11 +31,10 @@ void menuAgregarSocio(){
         cout << "Ingrese una CI: ";
         cin >> ci;
         if(existeSocio(stoi(ci)))
-            throw std::invalid_argument("Socio ya registrado\n");
-        cout << endl;
+            throw std::invalid_argument("Socio ya registrado.\n");
         agregarSocio(ci, nombre);
     }else
-        throw std::invalid_argument("Limite de socios excedido\n");   
+        throw std::invalid_argument("Limite de socios alcanzado.\n");   
 }
 
 void agregarSocio(string ci, string nombre){
@@ -119,7 +118,7 @@ void menuAgregarClase(){
             break;
         }
     }else
-        throw std::invalid_argument("Limite de clases excedido\n");
+        throw std::invalid_argument("Limite de clases alcanzado.\n");
 }
 
 void agregarClase(DtClase& clase){
@@ -131,7 +130,7 @@ void agregarClase(DtClase& clase){
                                            dts.getCantBicicletas());
         colClase.c[colClase.tope] = spinning;
         colClase.tope++;
-        cout << "Clase registrada con exito\n" << endl;                             
+        cout << "Clase registrada con exito.\n" << endl;                             
     } catch(bad_cast){
             DtEntrenamiento& dte = dynamic_cast<DtEntrenamiento&>(clase);
             Entrenamiento *entrenamiento = new Entrenamiento (dte.getID(),
@@ -140,7 +139,7 @@ void agregarClase(DtClase& clase){
                                                               dte.getRambla());
             colClase.c[colClase.tope] = entrenamiento;
             colClase.tope++;
-            cout << "Clase registrada con exito\n" << endl;
+            cout << "Clase registrada con exito.\n" << endl;
     }
     /*DtClase *c = &clase;
     DtSpinning* dts = dynamic_cast<DtSpinning*>(c);
@@ -179,12 +178,13 @@ bool existeClase(int id){
     while(i < colClase.tope){ 
         if(id == colClase.c[i]->getID())
             return true;
+        i++;
     }
     return false;
 }
 
 bool diaValido(int dia){
-    if(dia > 0 && dia < 31)
+    if(dia > 0 && dia < 32)
         return true;
     else
         return false;
@@ -258,7 +258,7 @@ void menu(){
     cout << "3. Agregar Inscripcion" << endl;
     cout << "4. Borrar Inscripcion" << endl;
     cout << "5. Salir" << endl;
-    cout << "\nIngrese una opcion: ";
+    cout << "Ingrese una opcion: ";
     
 }
 
