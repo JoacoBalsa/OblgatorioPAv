@@ -22,7 +22,7 @@ struct Clases {
 
 // Funciones
 void menuAgregarSocio(){
-    if(colSocio.tope < MAX_SOCIOS){
+    if(colSocio.tope < MAX_SOCIOS){ //Se fija que no se haya alcanzado el maximo de socios en el gimnasio.
         string ci, nombre;
         cout << "▓▓▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░░░░░░░░▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
         cout << "▓▓▓▓▓▓▒▒▒▒▒▒▒ AGREGAR SOCIO ▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
@@ -30,6 +30,8 @@ void menuAgregarSocio(){
         cin >> nombre;
         cout << "Ingrese una CI: ";
         cin >> ci;
+        if(existeSocio(stoi(ci)))
+            throw std::invalid_argument("Socio ya registrado\n");
         cout << endl;
         agregarSocio(ci, nombre);
     }else
@@ -37,25 +39,25 @@ void menuAgregarSocio(){
 }
 
 void agregarSocio(string ci, string nombre){
-    if(colSocio.tope < MAX_SOCIOS){
-        int i = 0;
-
-        while(i < colSocio.tope && colSocio.s[i]->getCI() != stoi(ci)) //Llega hasta el final del arreglo de socios y se fija que haya un socio ya registrado con esa C.I
-            i++;
-        if(i == colSocio.tope){ //Si llego al final quiere decir que no se repitio la C.I
-            colSocio.tope++;
-            Socio* nuevoS = new Socio(stoi(ci), nombre);
-            colSocio.s[i] = nuevoS;
-            cout << "Socio registrado exitosamente" << endl;
-        }else
-            throw std::invalid_argument("Socio ya registrado\n");
-    }else   
-        throw std::invalid_argument("Limite de socios exedido.\n");
+    Socio* nuevoS = new Socio(stoi(ci), nombre);
+    colSocio.s[colSocio.tope] = nuevoS;
+    colSocio.tope++;
+    cout << "Socio registrado exitosamente" << endl;
+    /*int i = 0;
+    while(i < colSocio.tope && colSocio.s[i]->getCI() != stoi(ci)) //Llega hasta el final del arreglo de socios y se fija que no haya un socio ya registrado con esa C.I
+        i++;
+    if(i == colSocio.tope){ //Si llego al final quiere decir que no se repitio la C.I
+        colSocio.tope++;
+        Socio* nuevoS = new Socio(stoi(ci), nombre);
+        colSocio.s[i] = nuevoS;
+        cout << "Socio registrado exitosamente" << endl;
+    }else
+        throw std::invalid_argument("Socio ya registrado\n");*/
 }
 
 void menuAgregarClase(){
     if(colClase.tope < MAX_CLASES){
-        int id, aux,i = 0, opc, cantB;
+        int id, aux opc, cantB;
         string nom, enRam;
         turno t;
         bool ram, repetida = true;
@@ -66,13 +68,15 @@ void menuAgregarClase(){
         cout << "▓▓▓▓▓▓▒▒▒▒▒▒▒ AGREGAR CLASE ▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
         cout << "Ingrese un id para la clase: ";
         cin >> id;
-        while(i < colClase.tope && colClase.c[i]->getID() != id){
+        if(existeClase(id))
+            throw std::invalid_argument("ID ya en uso\n");
+        /*while(i < colClase.tope && colClase.c[i]->getID() != id){
             i++;
             if(i == colClase.tope)
                 repetida = false;
         }
         if(colClase.tope != 0 && repetida)
-            throw std::invalid_argument("ID ya en uso\n");
+            throw std::invalid_argument("ID ya en uso\n");*/
         cout << "Ingrese un nombre para la clase: ";
         cin >> nom;
         cout << "Seleccione un turno para la clase: " << endl;
@@ -162,23 +166,21 @@ void agregarClase(DtClase& clase){
 
 bool existeSocio(int ci){
     int i = 0;
-    bool existe = false;
-    while(i < colSocio.tope && !existe){ 
-        if(ciS == colSocio.s[i]->getCI())
-            existe = true;
+    while(i < colSocio.tope){ 
+        if(ci == colSocio.s[i]->getCI())
+            return true;
         i++;
     }
-    return existe;
+    return false;
 }
 
 bool existeClase(int id){
     int i = 0;
-    bool existe = false
-    while(i < colClase.tope && !existe){ 
-        if(idC == colClase.c[i]->getID())
-            existe = true;
+    while(i < colClase.tope){ 
+        if(id == colClase.c[i]->getID())
+            return true;
     }
-    return existe;
+    return false;
 }
 
 bool diaValido(int dia){
@@ -201,6 +203,8 @@ bool anioValido(int anio){
     else    
         return true;
 }
+
+bool cupoAlcanzado(int idC){}
 
 void menuAgregarInscripcion(){
     int idC, dia, mes, anio;
@@ -300,7 +304,7 @@ int main(){
                         cout << e.what() << endl;
                     }
                     break;
-            default://Opcion unicamente para ver si funciona la sobrecarga de operador y si registra bien las clases
+            default:       //Opcion unicamente para ver si funciona la sobrecarga de operador y si registra bien las clases
                 for(int i = 0; i < colClase.tope; i++){
                     try{
                     Spinning& clas = dynamic_cast<Spinning&>(*colClase.c[i]);

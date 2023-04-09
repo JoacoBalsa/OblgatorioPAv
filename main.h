@@ -30,12 +30,15 @@ void agregarClase(DtClase& clase);
 void menuAgregarInscripcion();
 
 bool existeSocio(int ci);
+//Retorna true si ya existe un socio con la c.i pasada por parametro, false en c.c
 
 bool existeClase(int id);
+//Retorna true si ya existe una clase con la id pasada por parametro, false en c.c
 
 bool existeInscripcion(int ciS, int idC);
 
 bool cupoAlcanzado(int idC);
+//Retorna true si la clase pasada por parametro ya alcanzo el cupo de inscripciones, false en c.c
 
 bool diaValido(int dia);
 
