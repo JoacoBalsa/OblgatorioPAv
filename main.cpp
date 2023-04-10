@@ -204,9 +204,33 @@ bool anioValido(int anio){
         return true;
 }
 
-bool cupoAlcanzado(int idC){}
+bool cupoAlcanzado(int idC){
+    int i=0;
+    while(colClase.c[i]->getID() != idC)
+        i++;
+    if(colClase.c[i]->getCantIns() < colClase.c[i]->cupo())
+        return false;
+    else
+        return true;
+}
 
-bool existeInscripcion(int ciS, int idC){}
+bool existeInscripcion(int ciS, int idC){
+    int i = 0, j = 0;
+    Inscripcion* insc;
+    while(colClase.c[i]->getID() != idC)
+        i++;
+    if(colClase.c[i]->getCantIns() > 0){
+        insc = colClase.c[i]->getInscripcion(ciS, j);
+        cout << insc->getSocio()->getCI() << " = "  << ciS << endl;
+        if(insc->getSocio()->getCI() == ciS){
+            cout<< "Entro al if" << endl;
+            return true;
+        }
+    }
+    else if (colClase.c[i]->getCantIns() == 0)
+        return true;
+    return false;
+}
 
 void menuAgregarInscripcion(){
     int idC, dia, mes, anio;
@@ -224,7 +248,7 @@ void menuAgregarInscripcion(){
         throw std::invalid_argument("No existe esa clase.\n");
     if(!existeInscripcion(stoi(ciS), idC))                          //Se fija que ese socio no este ya inscripto en esa clase.
         throw std::invalid_argument("Ese usuario ya esta inscripto en esa clase.\n");
-    if(!cupoAlcanzado(idC))                                         //Se fija que todavia hayan cupos en esa clase.
+    if(cupoAlcanzado(idC))                                         //Se fija que todavia hayan cupos en esa clase.
         throw std::invalid_argument("No hay mas cupos en esa clase.\n");
     cout << "FECHA INICIO" << endl;
     cout << "DIA: ";
@@ -250,6 +274,7 @@ void agregarInscripcion(string ciSocio, int idClase, DtFecha fecha){
     while(stoi(ciSocio) != colSocio.s[j]->getCI()) //Busca el socio
         j++;
     Inscripcion *nuevaI = new Inscripcion(fecha, colSocio.s[j]);
+    colClase.c[i]->setInscripcion(nuevaI);
 
 }
 

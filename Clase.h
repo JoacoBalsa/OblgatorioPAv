@@ -30,7 +30,7 @@ public:
     void setNombre(string nombre);
     turno getTurno();
     void setTurno(turno t);
-    Inscripcion getInscripcion(int ci, int &i);
+    Inscripcion* getInscripcion(int ci, int &i);
     void elimInsc(int ciS);
     void setInscripcion(Inscripcion* ins);
     int getCantIns();

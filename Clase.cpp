@@ -15,7 +15,6 @@ Clase::Clase(int id, string nombre, turno t){
     this->id = id;
     this->nombre = nombre;
     this->t = t;
-    this->ins = new Inscripcion[MAX_INSCRIPCIONES];
     this->cantIns = 0;
 }
 
@@ -47,13 +46,11 @@ int Clase::getCantIns(){
     return this->cantIns;
 }
 
-Inscripcion Clase::getInscripcion(int ci, int &i){
-    Inscripcion aux;
-    while(i < this->getCantIns() && this->ins[i]->getSocio())
+Inscripcion* Clase::getInscripcion(int ci, int &i){
+    i = 0;
+    while(i < this->getCantIns() && this->ins[i]->getSocio()->getCI() != ci)
         i++;
-    aux.setFecha(this->ins[i]->getFecha());
-    aux.setSocio(this->ins[i]->getSocio());
-    return aux;
+    return this->ins[i];
 }
 
 void Clase::setInscripcion(Inscripcion* ins){
@@ -62,7 +59,7 @@ void Clase::setInscripcion(Inscripcion* ins){
 }
 
 void Clase::elimInsc(int ciS){
-    Inscripcion swap;
+    Inscripcion* swap;
     int i;
     swap = this->getInscripcion(ciS, i);
     swap = this->ins[i];
