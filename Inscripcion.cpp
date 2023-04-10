@@ -1,5 +1,5 @@
 #include "Inscripcion.h"
-#include "DtSocio.h"
+#include "Socio.h"
 #include "DtClase.h"
 #include "DtFecha.h"
 #include <iostream>
@@ -13,10 +13,9 @@ using namespace std;
 
 Inscripcion::Inscripcion(){}
 
-Inscripcion::Inscripcion(DtFecha fecha, DtSocio socio, DtClase clase){
+Inscripcion::Inscripcion(DtFecha fecha, Socio* socio){
     this->fecha = fecha;
     this->socio = socio;
-    this->clase = clase;
 }
 
 DtFecha Inscripcion::getFecha(){
@@ -27,20 +26,12 @@ void Inscripcion::setFecha(DtFecha fecha){
     this->fecha = fecha;
 }
 
-DtSocio Inscripcion::getSocio(){
+Socio* Inscripcion::getSocio(){
     return this->socio;
 }
 
-void Inscripcion::setSocio(DtSocio socio){
+void Inscripcion::setSocio(Socio* socio){
     this->socio = socio;
-}
-
-DtClase Inscripcion::getClase(){
-    return this->clase;
-}
-
-void Inscripcion::setClase(DtClase clase){
-    this->clase = clase;
 }
 
 Inscripcion::~Inscripcion(){}

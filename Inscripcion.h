@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string.h>
 #include "DtFecha.h"
-#include "DtSocio.h"
+#include "Socio.h"
 #include "DtClase.h"
 
 #define MAX_INSCRIPCIONES 50
@@ -19,17 +19,14 @@ private:
     //Atributo
     DtFecha fecha;
     //Pseudoatributos
-    DtSocio socio;
-    DtClase clase;
+    Socio* socio;
 public:
     Inscripcion();
-    Inscripcion(DtFecha fecha, DtSocio socio, DtClase clase);
+    Inscripcion(DtFecha fecha, Socio* socio);
     DtFecha getFecha();
     void setFecha(DtFecha fecha);
-    DtSocio getSocio();
-    void setSocio(DtSocio socio);
-    DtClase getClase();
-    void setClase(DtClase clase);
+    Socio* getSocio();
+    void setSocio(Socio* socio);
     ~Inscripcion();
 };
 

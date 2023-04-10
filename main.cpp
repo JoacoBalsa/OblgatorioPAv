@@ -56,7 +56,7 @@ void agregarSocio(string ci, string nombre){
 
 void menuAgregarClase(){
     if(colClase.tope < MAX_CLASES){
-        int id, aux opc, cantB;
+        int id, aux, opc, cantB;
         string nom, enRam;
         turno t;
         bool ram, repetida = true;
@@ -122,7 +122,7 @@ void menuAgregarClase(){
 }
 
 void agregarClase(DtClase& clase){
-    try{//Trata de castear la clase pasada por parametro como Spinning y si no puede la castea como Entrenamiento
+    try{                    //Trata de castear la clase pasada por parametro como Spinning y si no puede la castea como Entrenamiento
         DtSpinning& dts = dynamic_cast<DtSpinning&>(clase);
         Spinning *spinning = new Spinning (dts.getID(),
                                            dts.getNombre(),
@@ -206,6 +206,8 @@ bool anioValido(int anio){
 
 bool cupoAlcanzado(int idC){}
 
+bool existeInscripcion(int ciS, int idC){}
+
 void menuAgregarInscripcion(){
     int idC, dia, mes, anio;
     string ciS;
@@ -214,13 +216,13 @@ void menuAgregarInscripcion(){
     cout << "▓▓▓▓▓▓▒▒▒▒▒▒▒ AGREGAR INSCRIPCION ▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
     cout << "CI del Socio: ";
     cin >> ciS;
-    if(!existeSocio(ciS))                                           //Se fija que exista el socio de la inscripcion.
+    if(!existeSocio(stoi(ciS)))                                     //Se fija que exista el socio de la inscripcion.
         throw std::invalid_argument("No existe ese socio.\n");
     cout << "ID de Clase: ";
     cin >> idC;
     if(!existeClase(idC))                                           //Se fija que exista la clase de la inscripcion.
         throw std::invalid_argument("No existe esa clase.\n");
-    if(!existeInscripcion(ciS, idC))                                //Se fija que ese socio no este ya inscripto en esa clase.
+    if(!existeInscripcion(stoi(ciS), idC))                          //Se fija que ese socio no este ya inscripto en esa clase.
         throw std::invalid_argument("Ese usuario ya esta inscripto en esa clase.\n");
     if(!cupoAlcanzado(idC))                                         //Se fija que todavia hayan cupos en esa clase.
         throw std::invalid_argument("No hay mas cupos en esa clase.\n");
@@ -242,8 +244,16 @@ void menuAgregarInscripcion(){
 }
 
 void agregarInscripcion(string ciSocio, int idClase, DtFecha fecha){
+    int i = 0, j = 0;
+    while(idClase != colClase.c[i]->getID()) //Busca la clase
+        i++;
+    while(stoi(ciSocio) != colSocio.s[j]->getCI()) //Busca el socio
+        j++;
+    Inscripcion *nuevaI = new Inscripcion(fecha, colSocio.s[j]);
 
 }
+
+void menuBorrarInscripcion(){}
 
 void borrarInscripcion (string ciSocio, int idClase){
 
@@ -259,7 +269,6 @@ void menu(){
     cout << "4. Borrar Inscripcion" << endl;
     cout << "5. Salir" << endl;
     cout << "Ingrese una opcion: ";
-    
 }
 
 // Main
@@ -321,7 +330,7 @@ int main(){
         menu();
         cin >> opc;
     }
-    cout << "Me voy a la mierda" << endl;
+    cout << "Me voy" << endl;
     return 0;
 }
 
