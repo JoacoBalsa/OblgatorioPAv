@@ -165,6 +165,7 @@ void agregarClase(DtClase& clase){
 
 bool existeSocio(int ci){
     int i = 0;
+    
     while(i < colSocio.tope){ 
         if(ci == colSocio.s[i]->getCI())
             return true;
@@ -175,6 +176,7 @@ bool existeSocio(int ci){
 
 bool existeClase(int id){
     int i = 0;
+    
     while(i < colClase.tope){ 
         if(id == colClase.c[i]->getID())
             return true;
@@ -206,7 +208,8 @@ bool anioValido(int anio){
 
 bool cupoAlcanzado(int idC){
     int i=0;
-    while(colClase.c[i]->getID() != idC)
+    
+    while(colClase.c[i]->getID() != idC) //Busca la clase en la coleccion.
         i++;
     if(colClase.c[i]->getCantIns() < colClase.c[i]->cupo())
         return false;
@@ -216,20 +219,19 @@ bool cupoAlcanzado(int idC){
 
 bool existeInscripcion(int ciS, int idC){
     int i = 0, j = 0;
+
     Inscripcion* insc;
-    while(colClase.c[i]->getID() != idC)
+    while(colClase.c[i]->getID() != idC) //Busca la clase en la coleccion.
         i++;
     if(colClase.c[i]->getCantIns() > 0){
         insc = colClase.c[i]->getInscripcion(ciS, j);
-        cout << insc->getSocio()->getCI() << " = "  << ciS << endl;
-        if(insc->getSocio()->getCI() == ciS){
-            cout<< "Entro al if" << endl;
+        if(insc == NULL)
+            return false;
+        else
             return true;
-        }
     }
     else if (colClase.c[i]->getCantIns() == 0)
-        return true;
-    return false;
+        return false;
 }
 
 void menuAgregarInscripcion(){
@@ -246,7 +248,7 @@ void menuAgregarInscripcion(){
     cin >> idC;
     if(!existeClase(idC))                                           //Se fija que exista la clase de la inscripcion.
         throw std::invalid_argument("No existe esa clase.\n");
-    if(!existeInscripcion(stoi(ciS), idC))                          //Se fija que ese socio no este ya inscripto en esa clase.
+    if(existeInscripcion(stoi(ciS), idC))                          //Se fija que ese socio no este ya inscripto en esa clase.
         throw std::invalid_argument("Ese usuario ya esta inscripto en esa clase.\n");
     if(cupoAlcanzado(idC))                                         //Se fija que todavia hayan cupos en esa clase.
         throw std::invalid_argument("No hay mas cupos en esa clase.\n");
@@ -269,19 +271,42 @@ void menuAgregarInscripcion(){
 
 void agregarInscripcion(string ciSocio, int idClase, DtFecha fecha){
     int i = 0, j = 0;
+    
     while(idClase != colClase.c[i]->getID()) //Busca la clase
         i++;
     while(stoi(ciSocio) != colSocio.s[j]->getCI()) //Busca el socio
         j++;
     Inscripcion *nuevaI = new Inscripcion(fecha, colSocio.s[j]);
     colClase.c[i]->setInscripcion(nuevaI);
-
+    cout << "Socio inscripto con exito.\n";
 }
 
-void menuBorrarInscripcion(){}
+void menuBorrarInscripcion(){
+    string ciS;
+    int idC;
+
+    cout << "▓▓▓▓▓▓▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
+    cout << "▓▓▓▓▓▓▒▒▒▒▒▒▒ BORRAR INSCRIPCION  ▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
+    cout << "CI del Socio: ";
+    cin >> ciS;
+    if(!existeSocio(stoi(ciS)))                                     //Se fija que exista el socio de la inscripcion.
+        throw std::invalid_argument("No existe ese socio.\n");
+    cout << "ID de Clase: ";
+    cin >> idC;
+    if(!existeClase(idC))                                           //Se fija que exista la clase de la inscripcion.
+        throw std::invalid_argument("No existe esa clase.\n");
+    if(!existeInscripcion(stoi(ciS), idC))
+        throw std::invalid_argument("El socio no esta inscripto en esta clase.\n");
+    borrarInscripcion (ciS, idC); 
+}
 
 void borrarInscripcion (string ciSocio, int idClase){
+    int i = 0;
 
+    while(idClase != colClase.c[i]->getID()) //Busca la clase
+        i++;
+    colClase.c[i]->elimInsc(stoi(ciSocio));
+    cout << "Inscripcion borrada con exito.\n";
 }
 
 void menu(){
@@ -355,7 +380,7 @@ int main(){
         menu();
         cin >> opc;
     }
-    cout << "Me voy" << endl;
+    cout << "▓▓▓▓▓▓▒▒▒▒▒▒░░ Me voy :) ░░▒▒▒▒▒▒▓▓▓▓▓▓" << endl;
     return 0;
 }
 

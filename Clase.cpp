@@ -46,11 +46,14 @@ int Clase::getCantIns(){
     return this->cantIns;
 }
 
-Inscripcion* Clase::getInscripcion(int ci, int &i){
-    i = 0;
-    while(i < this->getCantIns() && this->ins[i]->getSocio()->getCI() != ci)
-        i++;
-    return this->ins[i];
+Inscripcion* Clase::getInscripcion(int ci, int &posIns){
+    posIns = 0;
+    while(posIns < this->getCantIns() && this->ins[posIns]->getSocio()->getCI() != ci) // Itera buscando ci
+        posIns++;
+    if(posIns >= this->getCantIns()) //Si posIns > a la cantidad de inscriptos quiere decir que el socio no esta inscripto.
+        return NULL;
+    else
+        return this->ins[posIns];
 }
 
 void Clase::setInscripcion(Inscripcion* ins){
@@ -60,10 +63,9 @@ void Clase::setInscripcion(Inscripcion* ins){
 
 void Clase::elimInsc(int ciS){
     Inscripcion* swap;
-    int i;
-    swap = this->getInscripcion(ciS, i);
-    swap = this->ins[i];
-    this->ins[i] = this->ins[this->cantIns];
+    int posIns;
+    swap = this->getInscripcion(ciS, posIns);
+    this->ins[posIns] = this->ins[this->cantIns];
     this->ins[this->cantIns] = swap;
     delete this->ins[this->cantIns];
     this->cantIns--;
