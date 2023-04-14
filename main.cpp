@@ -193,7 +193,7 @@ bool existeInscripcion(int ciS, int idC){
         else
             return true;
     }
-    else if (colClase.c[i]->getCantIns() == 0)
+    else
         return false;
 }
 

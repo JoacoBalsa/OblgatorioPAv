@@ -62,11 +62,12 @@ void Clase::setInscripcion(Inscripcion* ins){
 }
 
 void Clase::elimInsc(int ciS){
-    Inscripcion* swap;
-    int posIns;
-    swap = this->getInscripcion(ciS, posIns); //Busca la inscripcion que se quiere borrar y guarda la posicion en el arreglo de la misma.
-    this->ins[posIns] = this->ins[this->cantIns]; //En el lugar de la inscripcion a borrar se copia la ultima inscripcion del arreglo.
-    this->ins[this->cantIns] = swap; //En la ultima posicion del arreglo guarda la inscripcion a borrar.
+    int i = 0;
+    while(i < this->cantIns && this->ins[i]->getSocio()->getCI() != ciS)
+        i++;
+    this->ins[i] = this->ins[this->cantIns-1];
+    this->ins[this->cantIns-1] = NULL;
+    delete this->ins[this->cantIns-1];
     this->cantIns--;
 }
 
