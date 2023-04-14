@@ -31,7 +31,7 @@ void menuAgregarSocio(){
         cout << "Ingrese una CI: ";
         cin >> ci;
         if(existeSocio(stoi(ci)))
-            throw std::invalid_argument("Socio ya registrado.\n");
+            throw std::invalid_argument("Cedula ya registrada.\n");
         agregarSocio(ci, nombre);
     }else
         throw std::invalid_argument("Limite de socios alcanzado.\n");   
@@ -42,16 +42,6 @@ void agregarSocio(string ci, string nombre){
     colSocio.s[colSocio.tope] = nuevoS;
     colSocio.tope++;
     cout << "Socio registrado exitosamente" << endl;
-    /*int i = 0;
-    while(i < colSocio.tope && colSocio.s[i]->getCI() != stoi(ci)) //Llega hasta el final del arreglo de socios y se fija que no haya un socio ya registrado con esa C.I
-        i++;
-    if(i == colSocio.tope){ //Si llego al final quiere decir que no se repitio la C.I
-        colSocio.tope++;
-        Socio* nuevoS = new Socio(stoi(ci), nombre);
-        colSocio.s[i] = nuevoS;
-        cout << "Socio registrado exitosamente" << endl;
-    }else
-        throw std::invalid_argument("Socio ya registrado\n");*/
 }
 
 void menuAgregarClase(){
@@ -69,13 +59,6 @@ void menuAgregarClase(){
         cin >> id;
         if(existeClase(id))
             throw std::invalid_argument("ID ya en uso\n");
-        /*while(i < colClase.tope && colClase.c[i]->getID() != id){
-            i++;
-            if(i == colClase.tope)
-                repetida = false;
-        }
-        if(colClase.tope != 0 && repetida)
-            throw std::invalid_argument("ID ya en uso\n");*/
         cout << "Ingrese un nombre para la clase: ";
         cin >> nom;
         cout << "Seleccione un turno para la clase: " << endl;
@@ -141,26 +124,6 @@ void agregarClase(DtClase& clase){
             colClase.tope++;
             cout << "Clase registrada con exito.\n" << endl;
     }
-    /*DtClase *c = &clase;
-    DtSpinning* dts = dynamic_cast<DtSpinning*>(c);
-    if(dts != NULL){
-        Spinning *spinning = new Spinning (dts->getID(),
-                                           dts->getNombre(),
-                                           dts->getTurno(),
-                                           dts->getCantBicicletas());
-        colClase.c[colClase.tope] = spinning;
-        colClase.tope++;
-        cout << "Clase registrada con exito\n" << endl;
-    }else{                          
-        DtEntrenamiento* dte = dynamic_cast<DtEntrenamiento*>(c);
-        Entrenamiento *entrenamiento = new Entrenamiento (dte->getID(),
-                                                          dte->getNombre(),
-                                                          dte->getTurno(),
-                                                          dte->getRambla());
-        colClase.c[colClase.tope] = entrenamiento;
-        colClase.tope++;
-        cout << "Clase registrada con exito\n" << endl;
-    } */  
 }
 
 bool existeSocio(int ci){
@@ -317,7 +280,8 @@ void menu(){
     cout << "2. Agregar Clase" << endl;
     cout << "3. Agregar Inscripcion" << endl;
     cout << "4. Borrar Inscripcion" << endl;
-    cout << "5. Salir" << endl;
+    cout << "5. Imprimir las clases registradas (funcion auxiliar para probar que se registran bien las clases y que funciona la sobrecarga)" << endl;
+    cout << "6. Salir" << endl;
     cout << "Ingrese una opcion: ";
 }
 
@@ -329,7 +293,7 @@ int main(){
 
     menu();
     cin >> opc;
-    while(opc != 5){
+    while(opc != 6){
         switch (opc){
             case 1: 
                     try{
@@ -363,7 +327,7 @@ int main(){
                         cout << e.what() << endl;
                     }
                     break;
-            default:       //Opcion unicamente para ver si funciona la sobrecarga de operador y si registra bien las clases
+            case 5:       //Opcion unicamente para ver si funciona la sobrecarga de operador y si registra bien las clases
                 for(int i = 0; i < colClase.tope; i++){
                     try{
                     Spinning& clas = dynamic_cast<Spinning&>(*colClase.c[i]);

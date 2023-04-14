@@ -42,8 +42,5 @@ ostream& operator <<(ostream& salida,DtSpinning& spinning){
         } 
   return salida;
 }
-/*  Spinning& ola = dynamic_cast<Spinning&>(*colClase.c[0]);
-    DtSpinning p = DtSpinning(ola.getID(), ola.getNombre(), ola.getTurno(), ola.getCantBicicletas());
-    cout << p << endl;*/
 
 DtSpinning::~DtSpinning(){}
