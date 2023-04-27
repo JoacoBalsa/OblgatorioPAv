@@ -280,7 +280,7 @@ void menu(){
     cout << "2. Agregar Clase" << endl;
     cout << "3. Agregar Inscripcion" << endl;
     cout << "4. Borrar Inscripcion" << endl;
-    cout << "5. Imprimir las clases registradas (funcion auxiliar para probar que se registran bien las clases y que funciona la sobrecarga)" << endl;
+    cout << "5. Imprimir las clases registradas" << endl;
     cout << "6. Salir" << endl;
     cout << "Ingrese una opcion: ";
 }
