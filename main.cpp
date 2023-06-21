@@ -15,6 +15,8 @@ struct Socios {
     int tope;
 } colSocio;
 
+//hola
+
 struct Clases {
     Clase* c[MAX_CLASES];
     int tope;
